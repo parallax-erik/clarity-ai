@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Advisory — Client Intake Form</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: #f0f4fa;
+    color: #0f1f3d;
+    min-height: 100vh;
+    padding: 48px 16px;
+  }
+
+  .wrapper {
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  .header {
+    background: linear-gradient(135deg, #0a2463 0%, #1565c0 100%);
+    border-radius: 16px 16px 0 0;
+    padding: 40px 48px 36px;
+    color: white;
+  }
+
+  .header-tag {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 12px;
+    font-weight: 500;
+  }
+
+  .header h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 28px;
+    font-weight: 400;
+    line-height: 1.2;
+    margin-bottom: 12px;
+  }
+
+  .header p {
+    font-size: 14px;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.6;
+    max-width: 480px;
+  }
+
+  .form-body {
+    background: white;
+    border-radius: 0 0 16px 16px;
+    padding: 40px 48px 48px;
+    box-shadow: 0 8px 40px rgba(10,36,99,0.08);
+  }
+
+  .section-title {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #1565c0;
+    font-weight: 500;
+    margin: 36px 0 20px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #e8eef8;
+  }
+
+  .section-title:first-child { margin-top: 0; }
+
+  .field-group {
+    margin-bottom: 22px;
+  }
+
+  label {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    color: #0f1f3d;
+    margin-bottom: 7px;
+  }
+
+  label .hint {
+    font-weight: 400;
+    color: #6b7fa3;
+    font-size: 12px;
+    margin-left: 6px;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  select,
+  textarea {
+    width: 100%;
+    padding: 11px 14px;
+    border: 1.5px solid #dde5f4;
+    border-radius: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    color: #0f1f3d;
+    background: #fafcff;
+    transition: border-color 0.15s, box-shadow 0.15s;
+    outline: none;
+    appearance: none;
+  }
+
+  input:focus, select:focus, textarea:focus {
+    border-color: #1565c0;
+    box-shadow: 0 0 0 3px rgba(21,101,192,0.1);
+    background: white;
+  }
+
+  select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236b7fa3' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 36px;
+    cursor: pointer;
+  }
+
+  textarea { resize: vertical; min-height: 90px; line-height: 1.6; }
+
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .scale-row {
+    display: flex;
+    gap: 8px;
+  }
+
+  .scale-option {
+    flex: 1;
+  }
+
+  .scale-option input[type="radio"] { display: none; }
+
+  .scale-option label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 44px;
+    border: 1.5px solid #dde5f4;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    background: #fafcff;
+    transition: all 0.15s;
+    color: #6b7fa3;
+    margin: 0;
+  }
+
+  .scale-option input[type="radio"]:checked + label {
+    background: #1565c0;
+    border-color: #1565c0;
+    color: white;
+  }
+
+  .scale-option label:hover { border-color: #1565c0; color: #1565c0; }
+  .scale-option input[type="radio"]:checked + label:hover { color: white; }
+
+  .scale-labels {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 6px;
+    font-size: 11px;
+    color: #6b7fa3;
+    padding: 0 2px;
+  }
+
+  .submit-area {
+    margin-top: 36px;
+    padding-top: 28px;
+    border-top: 1px solid #e8eef8;
+  }
+
+  .submit-area p {
+    font-size: 13px;
+    color: #6b7fa3;
+    margin-bottom: 16px;
+    line-height: 1.5;
+  }
+
+  .btn-submit {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(135deg, #0a2463 0%, #1565c0 100%);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: opacity 0.15s, transform 0.1s;
+    letter-spacing: 0.01em;
+  }
+
+  .btn-submit:hover { opacity: 0.92; }
+  .btn-submit:active { transform: scale(0.99); }
+
+  .footer-note {
+    text-align: center;
+    margin-top: 24px;
+    font-size: 12px;
+    color: #6b7fa3;
+    line-height: 1.6;
+  }
+
+  .required { color: #1565c0; margin-left: 2px; }
+
+  @media (max-width: 580px) {
+    .header, .form-body { padding: 28px 24px; }
+    .two-col { grid-template-columns: 1fr; }
+    .header h1 { font-size: 22px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrapper">
+  <div class="header">
+    <div class="header-tag">AI Advisory — Client Intake</div>
+    <h1>Tell us about yourself before your consultation</h1>
+    <p>Your answers let us prepare a personalised briefing before the call — so every minute counts.</p>
+  </div>
+
+  <div class="form-body">
+
+    <div class="section-title">Your details</div>
+
+    <div class="two-col">
+      <div class="field-group">
+        <label for="first-name">First name <span class="required">*</span></label>
+        <input type="text" id="first-name" name="first_name" placeholder="Jane" required>
+      </div>
+      <div class="field-group">
+        <label for="last-name">Last name <span class="required">*</span></label>
+        <input type="text" id="last-name" name="last_name" placeholder="Smith" required>
+      </div>
+    </div>
+
+    <div class="two-col">
+      <div class="field-group">
+        <label for="email">Email address <span class="required">*</span></label>
+        <input type="email" id="email" name="email" placeholder="jane@example.com" required>
+      </div>
+      <div class="field-group">
+        <label for="phone">Phone number <span class="required">*</span></label>
+        <input type="tel" id="phone" name="phone" placeholder="+61 4XX XXX XXX" required>
+      </div>
+    </div>
+
+    <div class="section-title">Your work</div>
+
+    <div class="field-group">
+      <label for="industry">Industry or profession <span class="required">*</span></label>
+      <input type="text" id="industry" name="industry" placeholder="e.g. Real estate, hospitality, education, retail, healthcare" required>
+    </div>
+
+    <div class="two-col">
+      <div class="field-group">
+        <label for="job-title">Job title or role <span class="required">*</span></label>
+        <input type="text" id="job-title" name="job_title" placeholder="e.g. Property Manager" required>
+      </div>
+      <div class="field-group">
+        <label for="years">Years in this role</label>
+        <select id="years" name="years_in_role">
+          <option value="">Select...</option>
+          <option>Less than 1 year</option>
+          <option>1–3 years</option>
+          <option>4–7 years</option>
+          <option>8–15 years</option>
+          <option>15+ years</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="field-group">
+      <label for="employment">Employment type <span class="required">*</span></label>
+      <select id="employment" name="employment_type" required>
+        <option value="">Select...</option>
+        <option>Employed (full-time or part-time)</option>
+        <option>Self-employed / Freelancer</option>
+        <option>Business owner (1–5 staff)</option>
+        <option>Business owner (6–20 staff)</option>
+        <option>Business owner (20+ staff)</option>
+        <option>Student</option>
+        <option>Other</option>
+      </select>
+    </div>
+
+    <div class="section-title">Your tools & tech</div>
+
+    <div class="field-group">
+      <label for="tools">What software or digital tools do you use day-to-day? <span class="required">*</span><span class="hint">e.g. Excel, Xero, Canva, Instagram, Shopify, email</span></label>
+      <input type="text" id="tools" name="daily_tools" placeholder="List the main ones" required>
+    </div>
+
+    <div class="field-group">
+      <label for="ai-experience">Have you used any AI tools? If so, which ones?<span class="hint">e.g. ChatGPT, Midjourney, Grammarly — or write "None"</span></label>
+      <input type="text" id="ai-experience" name="ai_experience" placeholder="None / ChatGPT for drafting emails / ...">
+    </div>
+
+    <div class="field-group">
+      <label>How comfortable are you learning new technology? <span class="required">*</span></label>
+      <div class="scale-row">
+        <div class="scale-option"><input type="radio" name="tech_comfort" id="tc1" value="1"><label for="tc1">1</label></div>
+        <div class="scale-option"><input type="radio" name="tech_comfort" id="tc2" value="2"><label for="tc2">2</label></div>
+        <div class="scale-option"><input type="radio" name="tech_comfort" id="tc3" value="3"><label for="tc3">3</label></div>
+        <div class="scale-option"><input type="radio" name="tech_comfort" id="tc4" value="4"><label for="tc4">4</label></div>
+        <div class="scale-option"><input type="radio" name="tech_comfort" id="tc5" value="5"><label for="tc5">5</label></div>
+      </div>
+      <div class="scale-labels"><span>Very uncomfortable</span><span>Very comfortable</span></div>
+    </div>
+
+    <div class="section-title">Your concerns & goals</div>
+
+    <div class="field-group">
+      <label for="concern">What is your biggest concern about AI and how it may affect your work? <span class="required">*</span></label>
+      <textarea id="concern" name="biggest_concern" placeholder="Be as specific as you like — there are no wrong answers." required></textarea>
+    </div>
+
+    <div class="field-group">
+      <label for="opportunity">Is there anything about AI you're hoping could actually help you?<span class="hint">Optional</span></label>
+      <textarea id="opportunity" name="biggest_opportunity" placeholder="e.g. Save time on admin, reduce costs, improve marketing..."></textarea>
+    </div>
+
+    <div class="field-group">
+      <label for="time">How much time per week could you realistically commit to learning about AI?</label>
+      <select id="time" name="time_available">
+        <option value="">Select...</option>
+        <option>Less than 30 minutes</option>
+        <option>30–60 minutes</option>
+        <option>1–2 hours</option>
+        <option>2–4 hours</option>
+        <option>More than 4 hours</option>
+      </select>
+    </div>
+
+    <div class="field-group">
+      <label for="typical-day">Briefly describe a typical day at work<span class="hint">Main tasks and responsibilities</span></label>
+      <textarea id="typical-day" name="typical_day" placeholder="Walk us through what you usually spend your time on..."></textarea>
+    </div>
+
+    <div class="field-group">
+      <label for="other">Anything else we should know before the call?<span class="hint">Optional</span></label>
+      <textarea id="other" name="other_notes" placeholder="Any specific questions, concerns, or context you'd like to share."></textarea>
+    </div>
+
+    <div class="submit-area">
+      <p>Clicking submit will open your email app with your responses ready to send. Just hit send — we'll be in touch within 24 hours to confirm your booking.</p>
+      <button class="btn-submit" onclick="submitForm()">Submit intake form →</button>
+    </div>
+
+  </div>
+
+  <div class="footer-note">
+    AI Advisory · erik.linsdell@gmail.com<br>
+    Your information is kept strictly confidential and used only to prepare your consultation.
+  </div>
+</div>
+
+<script>
+function submitForm() {
+  const get = id => document.getElementById(id)?.value?.trim() || '';
+  const getRadio = name => { const el = document.querySelector(`input[name="${name}"]:checked`); return el ? el.value : 'Not answered'; };
+
+  const requiredFields = [
+    { id: 'first-name', label: 'First name' },
+    { id: 'last-name', label: 'Last name' },
+    { id: 'email', label: 'Email' },
+    { id: 'phone', label: 'Phone number' },
+    { id: 'industry', label: 'Industry' },
+    { id: 'job-title', label: 'Job title' },
+    { id: 'employment', label: 'Employment type' },
+    { id: 'tools', label: 'Daily tools' },
+    { id: 'concern', label: 'Biggest concern' },
+  ];
+
+  for (const f of requiredFields) {
+    if (!get(f.id)) { alert(`Please fill in: ${f.label}`); document.getElementById(f.id)?.focus(); return; }
+  }
+
+  if (getRadio('tech_comfort') === 'Not answered') {
+    alert('Please select your technology comfort level (1–5).');
+    return;
+  }
+
+  const name = `${get('first-name')} ${get('last-name')}`;
+  const subject = `AI Advisory Intake — ${name}`;
+
+  const body = `AI ADVISORY — CLIENT INTAKE FORM
+Submitted by: ${name}
+════════════════════════════════════════
+
+CONTACT DETAILS
+Name: ${name}
+Email: ${get('email')}
+Phone: ${get('phone')}
+
+════════════════════════════════════════
+WORK BACKGROUND
+Industry / Profession: ${get('industry')}
+Job Title / Role: ${get('job-title')}
+Employment Type: ${get('employment')}
+Years in Role: ${get('years') || 'Not specified'}
+
+════════════════════════════════════════
+TOOLS & TECHNOLOGY
+Daily Tools: ${get('tools')}
+AI Experience: ${get('ai-experience') || 'None specified'}
+Tech Comfort Level (1–5): ${getRadio('tech_comfort')}
+Time Available Per Week: ${get('time') || 'Not specified'}
+
+════════════════════════════════════════
+CONCERNS & GOALS
+Biggest Concern:
+${get('concern')}
+
+Biggest Opportunity:
+${get('opportunity') || 'Not specified'}
+
+════════════════════════════════════════
+CONTEXT
+Typical Day:
+${get('typical-day') || 'Not specified'}
+
+Other Notes:
+${get('other') || 'None'}
+
+════════════════════════════════════════
+Please reply to confirm booking time.`;
+
+  const mailto = `mailto:erik.linsdell@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  window.location.href = mailto;
+}
+</script>
+</body>
+</html>

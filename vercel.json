@@ -1,0 +1,9 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "routes": [
+    { "src": "/intake", "dest": "/intake-form.html" },
+    { "src": "/poster", "dest": "/poster.html" },
+    { "src": "/poster-irl", "dest": "/poster-irl.html" }
+  ]
+}
