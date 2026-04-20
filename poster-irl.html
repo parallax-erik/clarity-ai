@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clarity AI — Poster (Print)</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #e8edf5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 32px 16px;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  .poster {
+    width: 595px;
+    min-height: 842px;
+    background: white;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 20px 80px rgba(10,36,99,0.18);
+  }
+
+  .top-band {
+    background: #0a2463;
+    height: 6px;
+    width: 100%;
+  }
+
+  .bg-circle {
+    position: absolute;
+    width: 520px;
+    height: 520px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(21,101,192,0.07) 0%, transparent 70%);
+    top: -120px;
+    right: -140px;
+    pointer-events: none;
+  }
+
+  .bg-circle-2 {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(10,36,99,0.04) 0%, transparent 70%);
+    bottom: 80px;
+    left: -80px;
+    pointer-events: none;
+  }
+
+  .header {
+    padding: 44px 52px 0;
+    position: relative;
+  }
+
+  .eyebrow {
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #1565c0;
+    font-weight: 500;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .eyebrow::before {
+    content: '';
+    display: block;
+    width: 20px;
+    height: 1.5px;
+    background: #1565c0;
+  }
+
+  .poster-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 38px;
+    line-height: 1.1;
+    color: #0a2463;
+    margin-bottom: 10px;
+    font-weight: 400;
+  }
+
+  .poster-title em {
+    font-style: italic;
+    color: #1565c0;
+  }
+
+  .subtitle {
+    font-size: 14px;
+    color: #5a7ab5;
+    line-height: 1.65;
+    max-width: 400px;
+    font-weight: 400;
+    margin-top: 8px;
+  }
+
+  .divider {
+    margin: 40px 52px;
+    height: 1px;
+    background: linear-gradient(to right, #1565c0, rgba(21,101,192,0.1));
+  }
+
+  .price-block {
+    margin: 0 52px 30px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .price-pill {
+    background: #0a2463;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 40px;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .price-amount {
+    font-family: 'DM Serif Display', serif;
+    font-size: 28px;
+    line-height: 1;
+    color: white;
+  }
+
+  .price-label {
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.65);
+    margin-top: 3px;
+  }
+
+  .price-desc {
+    font-size: 13px;
+    color: #5a7ab5;
+    line-height: 1.5;
+  }
+
+  .section-label {
+    padding: 0 52px;
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #1565c0;
+    font-weight: 500;
+    margin-bottom: 14px;
+  }
+
+  .offers {
+    padding: 0 52px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 28px;
+  }
+
+  .offer-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 14px 18px;
+    background: #f4f7fd;
+    border-radius: 10px;
+    border-left: 3px solid #1565c0;
+  }
+
+  .offer-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: #1565c0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .offer-icon svg { width: 16px; height: 16px; }
+
+  .offer-text strong {
+    font-size: 13px;
+    font-weight: 500;
+    color: #0a2463;
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  .offer-text span {
+    font-size: 12px;
+    color: #5a7ab5;
+    line-height: 1.45;
+  }
+
+  .for-section {
+    margin: 0 52px 28px;
+    padding: 18px 20px;
+    background: #0a2463;
+    border-radius: 12px;
+    color: white;
+  }
+
+  .for-label {
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    font-weight: 500;
+    margin-bottom: 10px;
+  }
+
+  .for-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+  }
+
+  .for-pill {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.15);
+    color: rgba(255,255,255,0.85);
+    font-size: 11.5px;
+    padding: 5px 12px;
+    border-radius: 20px;
+  }
+
+  /* IRL CTA — email only, large and scannable */
+  .cta-section {
+    margin: 0 52px 36px;
+    padding: 22px 24px;
+    border: 1.5px solid #1565c0;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .cta-arrow {
+    width: 40px;
+    height: 40px;
+    background: #1565c0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .cta-arrow svg { width: 18px; height: 18px; }
+
+  .cta-text-block { flex: 1; }
+
+  .cta-instruction {
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #1565c0;
+    font-weight: 500;
+    margin-bottom: 5px;
+  }
+
+  .cta-email-display {
+    font-family: 'DM Serif Display', serif;
+    font-size: 20px;
+    color: #0a2463;
+    letter-spacing: 0.01em;
+  }
+
+  .cta-sub {
+    font-size: 11px;
+    color: #8fa5c8;
+    margin-top: 4px;
+  }
+
+  .footer {
+    background: #f4f7fd;
+    padding: 16px 52px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid #dde8f5;
+  }
+
+  .footer-brand {
+    font-family: 'DM Serif Display', serif;
+    font-size: 14px;
+    color: #0a2463;
+    letter-spacing: 0.01em;
+  }
+
+  .footer-note {
+    font-size: 11px;
+    color: #8fa5c8;
+    text-align: right;
+    line-height: 1.4;
+  }
+
+  @media print {
+    body { background: white; padding: 0; }
+    .poster { box-shadow: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="poster">
+  <div class="top-band"></div>
+  <div class="bg-circle"></div>
+  <div class="bg-circle-2"></div>
+
+  <div class="header">
+    <div class="eyebrow">Clarity AI — One-on-one consultation</div>
+    <div class="poster-title">
+      Understand AI<br>before it changes<br><em>your</em> world.
+    </div>
+    <p class="subtitle">
+      A personal 60-minute consultation to explain what AI means for your industry, your role, and what you can do about it — in plain English. Includes a written action plan sent to you within 48 hours.
+    </p>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section-label">What's included</div>
+
+  <div class="offers">
+    <div class="offer-item">
+      <div class="offer-icon">
+        <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="8" cy="8" r="6.5" stroke="white" stroke-width="1.2"/>
+          <path d="M8 5v3.5l2 1.5" stroke="white" stroke-width="1.2" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="offer-text">
+        <strong>AI landscape briefing — tailored to your industry</strong>
+        <span>Where AI is now, where it's heading, and what it actually means for someone in your field.</span>
+      </div>
+    </div>
+    <div class="offer-item">
+      <div class="offer-icon">
+        <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M3 8.5L6.5 12 13 5" stroke="white" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="offer-text">
+        <strong>Your personal risk and opportunity report</strong>
+        <span>Honest identification of where AI may affect you — and where it could help you get ahead.</span>
+      </div>
+    </div>
+    <div class="offer-item">
+      <div class="offer-icon">
+        <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="2.5" y="2.5" width="11" height="11" rx="2" stroke="white" stroke-width="1.2"/>
+          <path d="M5 8h6M5 5.5h4M5 10.5h3" stroke="white" stroke-width="1.1" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="offer-text">
+        <strong>90-day action plan — written and sent to you</strong>
+        <span>Practical, realistic steps you can actually follow. No jargon. No overwhelm.</span>
+      </div>
+    </div>
+    <div class="offer-item">
+      <div class="offer-icon">
+        <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M8 2a6 6 0 100 12A6 6 0 008 2z" stroke="white" stroke-width="1.2"/>
+          <path d="M8 5.5V8l1.5 1.5" stroke="white" stroke-width="1.2" stroke-linecap="round"/>
+          <path d="M4.5 13.5c.5-1 1.5-1.5 3.5-1.5s3 .5 3.5 1.5" stroke="white" stroke-width="1.2" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="offer-text">
+        <strong>Check-in call at 8–10 weeks — included</strong>
+        <span>Catch up on your progress, get updated on new AI developments, and adjust the plan.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="for-section">
+    <div class="for-label">Who is this for</div>
+    <div class="for-pills">
+      <span class="for-pill">Small business owners</span>
+      <span class="for-pill">Professionals mid-career</span>
+      <span class="for-pill">Tradespeople</span>
+      <span class="for-pill">Educators &amp; teachers</span>
+      <span class="for-pill">Healthcare workers</span>
+      <span class="for-pill">Anyone feeling overwhelmed by AI</span>
+    </div>
+  </div>
+
+  <div class="section-label">Get in touch</div>
+
+  <div class="cta-section">
+    <div class="cta-arrow">
+      <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M3 9h12M10 5l4 4-4 4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <div class="cta-text-block">
+      <div class="cta-instruction">Send an email to book</div>
+      <div class="cta-email-display">erik.linsdell@gmail.com</div>
+      <div class="cta-sub">We'll reply within 24 hours to confirm your booking time.</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span class="footer-brand">Clarity AI</span>
+    <span class="footer-note">Consultations held via video call or in person · Melbourne, VIC<br>Bookings confirmed within 24 hours of enquiry</span>
+  </div>
+
+</div>
+
+</body>
+</html>
